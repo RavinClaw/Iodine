@@ -21,7 +21,8 @@ class Processor:
         return self.pc
 
     def Fetch(self):
-        self.instruction = self.program[self.pc]
+        if self.pc != -1 and self.pc <= len(self.program):
+            self.instruction = self.program[self.pc]
     
     def INC(self):
         self.pc += 1
@@ -75,10 +76,10 @@ class Processor:
     def execute_instruction(self):
         self.Fetch()
         
-        if self.instruction > 0xff: #? Ram Size Error
-            self.RamSizeError()
-            self.HALT()
-            return None
+        # if self.instruction > 0xff: #? Ram Size Error
+        #     self.RamSizeError()
+        #     self.HALT()
+        #     return None
 
 
         if self.instruction == 0x9a: #? Load Directly Into Ram
@@ -87,7 +88,7 @@ class Processor:
             addr = self.instruction
             self.INC()
             self.Fetch()
-            value = self.instruction()
+            value = self.instruction
             self.LDI(addr, value)
 
 
@@ -192,4 +193,7 @@ class Processor:
             self.Fetch()
             value = self.instruction
             self.LDC(value)
+        
+        elif self.instruction == 0x00: #? HALT
+            self.HALT()
         return None
