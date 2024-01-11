@@ -28,6 +28,11 @@ program = [
 The Code ^^^ will continue on until it hits 255 where it will then error out as the processor will have gone above its allowed hex integer value.
 ```
 
+## File Loading
+### Currently not implemented in the git version.
+All files that are used for the processor to run the programs will end with `.e`.
+All files that will be compiled down to assembly language will end with `.vs`.
+
 ## Future Updates
 ### The plan for the future
 I will attempt by best to add more and more functionality to this processor and at somepoint add a display and keyboard input, tho currently I want to implement a better error detection system that would allow the processor to just write to the next address in memory and keep going until it runs out of memory, and I also want to add external file support which would allow others to write code for the processor to read from without needing to write in hex (yes an assembly language. called voidscript (vs)).
